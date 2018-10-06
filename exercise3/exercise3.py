@@ -2,10 +2,12 @@
 import csv
 import json
 
+
 def display_result(result):
     for region in result.keys():
         print(region + ': ')
         for prezydent in result['polska'].keys():
+
             print(region + ' => ' + ' ' + prezydent + " = " + str(result[region][prezydent]) + " głosów")
 
 
@@ -35,6 +37,7 @@ with open('prezydent_2015_tura1.csv', 'r', encoding='ANSI') as csvfile:
         for prezydenci in result['polska'].keys():
             result['polska'][prezydenci] += int(row[prezydenci])
             result[row['Województwo']][prezydenci] += int(row[prezydenci])
+
 display_result(result)
 
 with open('result.json', 'w') as jsonfile:
